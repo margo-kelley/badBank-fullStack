@@ -1,0 +1,106 @@
+:root {
+  --main-dark: black;
+  --main-light: #e8e8e8;
+  --main-accent: red;
+  --accent: grey;
+}
+
+.navbar-brand, a:hover, .active, .page-subtitle, .btn-light, .btn-light:hover {
+  color: var(--main-accent);
+}
+
+.btn-light, nav, ::-webkit-scrollbar-track {
+  background-color: var(--main-dark);
+}
+
+* {
+  overflow-x: hidden;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--main-accent);
+}
+
+.navbar-brand {
+  margin-right: 0;
+  margin-bottom: 0;
+}
+
+.nav-link {
+  padding-left: 0;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  color: var(--accent);
+}
+
+nav {
+  color: var(--main-light);
+}
+
+.page-head {
+  text-align: center;
+  font-weight: 800;
+  font-size: 4em;
+  margin-bottom: 0;
+  margin-top: 2em;
+}
+
+.header, .page-subtitle {
+  text-align: center;
+  font-weight: 500;
+  font-size: 2em;
+}
+
+.header {
+  margin-bottom: 1em;
+  margin-top: 2em;
+}
+
+.page-subtitle {
+  font-style: italic;
+  margin-bottom: 4em;
+}
+
+.card-body {
+  padding: 2.5em;
+  background-color: var(--accent-light);
+  place-content: center;
+}
+
+.btn-light:hover {
+  background-color: var(--main-light);
+}
+
+h3 {
+  font-style: oblique;
+  padding-top: .5em;
+}
+
+.p {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#allData-card {
+  margin: 1em;
+}
+
+#bal-num {
+  font-size: 2.5em;
+  font-weight: 600;
+}
