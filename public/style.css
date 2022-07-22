@@ -1,16 +1,16 @@
 :root {
-  --main-dark: black;
-  --main-light: #e8e8e8;
-  --main-accent: red;
-  --accent: grey;
+  --dark: black;
+  --light: white;
+  --red: red;
+  --grey: grey;
 }
 
 .navbar-brand, a:hover, .active, .page-subtitle, .btn-light, .btn-light:hover {
-  color: var(--main-accent);
+  color: var(--red);
 }
 
 .btn-light, nav, ::-webkit-scrollbar-track {
-  background-color: var(--main-dark);
+  background-color: var(--dark);
 }
 
 * {
@@ -29,11 +29,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent);
+  background: var(--grey);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--main-accent);
+  background: var(--red);
 }
 
 .navbar-brand {
@@ -45,11 +45,15 @@
   padding-left: 0;
   margin-top: .5em;
   margin-bottom: .5em;
-  color: var(--accent);
+  color: var(--grey);
+}
+
+.userEmail {
+  color: var(--light);
 }
 
 nav {
-  color: var(--main-light);
+  color: var(--light);
 }
 
 .page-head {
@@ -78,12 +82,12 @@ nav {
 
 .card-body {
   padding: 2.5em;
-  background-color: var(--accent-light);
+  background-color: var(--grey);
   place-content: center;
 }
 
 .btn-light:hover {
-  background-color: var(--main-light);
+  background-color: var(--light);
 }
 
 h3 {
