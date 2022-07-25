@@ -2,7 +2,7 @@
   --dark: black;
   --light: white;
   --red: red;
-  --grey: #8f8f8f;
+  --grey: #aaaaaa;
 }
 
 .navbar-brand, a:hover, .active, .page-subtitle, .btn-light, .btn-light:hover {
@@ -62,6 +62,7 @@ nav {
   font-size: 4em;
   margin-bottom: 0;
   margin-top: 2em;
+  color: var(--dark);
 }
 
 .header, .page-subtitle {

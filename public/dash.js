@@ -14,8 +14,7 @@ function AllData(){
     return (
       <>
         <div className="container-fluid">
-          <p className="header">All User Data</p>
-          
+          <p className="header">User Dashboard</p>
           {data}
         </div>
       </>
