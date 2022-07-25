@@ -2,7 +2,7 @@
   --dark: black;
   --light: white;
   --red: red;
-  --grey: grey;
+  --grey: #8f8f8f;
 }
 
 .navbar-brand, a:hover, .active, .page-subtitle, .btn-light, .btn-light:hover {
@@ -99,6 +99,10 @@ h3 {
   padding-top: 1em;
   padding-bottom: 1em;
 }
+#p {
+  margin: 0;
+  padding: 0;
+}
 
 #allData-card {
   margin: 1em;
@@ -107,4 +111,8 @@ h3 {
 #bal-num {
   font-size: 2.5em;
   font-weight: 600;
+}
+
+.options {
+  text-align: center;
 }
