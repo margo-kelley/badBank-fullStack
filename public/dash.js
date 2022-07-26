@@ -1,4 +1,4 @@
-function AllData(){
+function Dash(){
     const [data, setData] = React.useState('');
 
     React.useEffect(() => {

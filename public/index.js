@@ -23,7 +23,7 @@ function Spa() {
         <Route path="/login/" component={Login} />
         <Route path="/deposit/" component={Deposit} />
         <Route path="/withdraw/" component={Withdraw} />
-        <Route path="/alldata/" component={AllData} />
+        <Route path="/dash/" component={Dash} />
       </UserContext.Provider>
     </HashRouter>
   );

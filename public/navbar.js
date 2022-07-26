@@ -28,8 +28,8 @@ function NavBar(){
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#/alldata/">
-                  All Data
+                <a className="nav-link" href="#/dash/">
+                  User Dashboard
                 </a>
               </li>
             </ul>
