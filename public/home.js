@@ -6,7 +6,7 @@ function Home(){
       <br/>
       <br/>
       <div className="options">
-        <Link to="/login/"><button className="btn btn-light">Login</button></Link><p id="p">or</p><Link to="/createaccount/"><button className="btn btn-light">Create Account</button></Link>
+        <Link to="/login/"><button className="btn btn-light">LOGIN</button></Link><p id="p">or</p><Link to="/createaccount/"><button className="btn btn-light">CREATE ACCOUNT</button></Link>
       </div>
       <br/>
       <Card

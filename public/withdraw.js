@@ -26,7 +26,7 @@ function WithdrawMsg(props){
         props.setShow(true);
         props.setStatus('');
       }}>
-        Get More Cash
+        GET MORE CASH
     </button>
   </>);
 }
@@ -77,7 +77,7 @@ function WithdrawForm(props){
         />
         <br />
         <button type="submit" className="btn btn-light" onClick={handle}>
-          Get Cash
+          GET CASH
         </button>
     </>
   );

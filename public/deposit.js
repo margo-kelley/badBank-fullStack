@@ -32,7 +32,7 @@ function DepositMsg(props){
           props.setShow(true);
           props.setStatus('');
       }}>
-      Add More Cash
+      ADD MORE CASH
     </button>
   </>);
 } 
@@ -73,7 +73,7 @@ function DepositForm(props){
 
     <button type="submit" 
       className="btn btn-light" 
-      onClick={handle}>Add Cash</button>
+      onClick={handle}>ADD CASH</button>
 
   </>);
 }

@@ -24,7 +24,7 @@ function BalanceMsg(props){
         props.setShow(true);
         props.setStatus('');
       }}>
-        Check balance again
+        REFRESH BALANCE
     </button>
   </>);
 }
@@ -62,7 +62,7 @@ function BalanceForm(props){
     <button type="submit" 
       className="btn btn-light" 
       onClick={handle}>
-        Check Balance
+        CHECK BALANCE
     </button>
 
   </>);
