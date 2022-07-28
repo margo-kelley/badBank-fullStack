@@ -21,12 +21,15 @@ function Login(){
 
 function LoginMsg(props){
   return(<>
-    <h5>Success</h5>
-    <button type="submit" 
-      className="btn btn-light" 
-      onClick={() => props.setShow(true)}>
-        Authenticate again
+    <h5>Success!</h5>
+    <br/>
+    <br/>
+    <Link to="/dash/">
+    <button
+      className="btn btn-light">
+      GO TO DASHBOARD
     </button>
+    </Link>
   </>);
 }
 
@@ -35,21 +38,22 @@ function LoginForm(props){
   const [password, setPassword] = React.useState('');
 
   function handle(){
-    fetch(`/account/login/${email}/${password}`)
-    .then(response => response.text())
-    .then(text => {
+    fetch(`/account/login/:email/:password`)
+      .then((response) => response.text())
+      .then((text) => {
         try {
-            const data = JSON.parse(text);
-            props.setStatus('');
-            props.setShow(false);
-            console.log('JSON:', data);
-        } catch(err) {
-            props.setStatus(text)
-            console.log('err:', text);
+          const data = JSON.parse(text);
+          props.setStatus("");
+          props.setShow(false);
+          console.log("JSON:", data);
+        } catch (err) {
+          props.setStatus(text);
+          console.log("err:", text);
         }
-    });
+      });
   }
 
+  // add google login???
 
   return (<>
 
@@ -67,7 +71,7 @@ function LoginForm(props){
       value={password} 
       onChange={e => setPassword(e.currentTarget.value)}/><br/>
 
-    <button type="submit" className="btn btn-light" onClick={handle}>Login</button>
+    <button type="submit" className="btn btn-light" onClick={handle}>LOGIN</button>
    
   </>);
 }

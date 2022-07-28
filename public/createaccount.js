@@ -1,22 +1,26 @@
 function CreateAccount(){
-  const [show, setShow]     = React.useState(true);
-  const [status, setStatus] = React.useState('');
+  const [show, setShow] = React.useState(true);
+  const [status, setStatus] = React.useState("");
 
   return (
     <>
-    <div className="container-fluid">
-      <h1 className="header">Create Account</h1>
-      <Card
-      bgcolor="grey"
-      txtcolor="black"
-      status={status}
-      body={show ?
-        <CreateForm setShow={setShow}/> :
-        <CreateMsg setShow={setShow}/>}
-      />
-    </div>
+      <div className="container-fluid">
+        <h1 className="header">Create Account</h1>
+        <Card
+          bgcolor="grey"
+          txtcolor="black"
+          status={status}
+          body={
+            show ? (
+              <CreateForm setShow={setShow} />
+            ) : (
+              <CreateMsg setShow={setShow} />
+            )
+          }
+        />
+      </div>
     </>
-  )
+  );
 }
 
 function CreateMsg(props){
@@ -24,24 +28,13 @@ function CreateMsg(props){
     <>
       <div className="container-fluid">
         <h2 className="success-head">
-          Success! Welcome to BADBANK, we're glad to have you.
+          Success! Welcome to BADBANK.
         </h2>
-        <p>
-          You will recieve a confirmation email within the next hour. Please
-          give 24 hours for your new account balance to update. Thank you for
-          choosing BADBANK.
-        </p>
-        <p className="p">
-          Be sure to check out our other types of accounts to get all your
-          finance needs in one place.
-        </p>
-        <button
-          type="submit"
-          className="btn btn-light"
-          onClick={() => props.setShow(true)}
-        >
-          Add Another Account
-        </button>
+        <br/>
+        <br/>
+        <Link to ="/login/">
+        <button className="btn btn-light">LOGIN</button>
+        </Link>
       </div>
     </>
   );
@@ -53,6 +46,8 @@ function CreateForm(props){
   const [password, setPassword] = React.useState('');
 
   function handle(){
+    const auth = firebase.auth();
+    auth.createUserWithEmailAndPassword(email, password);
     console.log(name,email,password);
     const url = `/account/create/${name}/${email}/${password}`;
     (async () => {
@@ -99,7 +94,7 @@ function CreateForm(props){
         />
         <br />
         <button type="submit" className="btn btn-light" onClick={handle}>
-        Create Account
+        CREATE ACCOUNT
         </button>
     </>
   );
