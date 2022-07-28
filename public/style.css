@@ -5,18 +5,16 @@
   --grey: #aaaaaa;
 }
 
-.navbar-brand, a:hover, .active, .page-subtitle, .btn-light, .btn-light:hover {
+.navbar-brand, a:hover, .active, .page-subtitle {
   color: var(--red);
 }
 
-.btn-light, nav, ::-webkit-scrollbar-track {
+nav, ::-webkit-scrollbar-track {
   background-color: var(--dark);
 }
 
 * {
   overflow-x: hidden;
-  font-family: 'Oswald', sans-serif;
-  font-family: 'Roboto', sans-serif;
 }
 
 .container-fluid {
@@ -39,6 +37,7 @@
 .navbar-brand {
   margin-right: 0;
   margin-bottom: 0;
+  font-family: 'Playfair Display', serif;
 }
 
 .nav-link {
@@ -46,19 +45,26 @@
   margin-top: .5em;
   margin-bottom: .5em;
   color: var(--grey);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
 }
 
-.userEmail {
-  color: var(--light);
+.dropdown-item {
+  display: inline;
 }
 
 nav {
   color: var(--light);
 }
 
+#user-email {
+  color: var(--light);
+}
+
 .page-head {
   text-align: center;
-  font-weight: 800;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
   font-size: 4em;
   margin-bottom: 0;
   margin-top: 2em;
@@ -74,6 +80,7 @@ nav {
 .header {
   margin-bottom: 1em;
   margin-top: 2em;
+  font-family: 'Playfair Display', serif;
 }
 
 .page-subtitle {
@@ -84,11 +91,22 @@ nav {
 .card-body {
   padding: 2.5em;
   background-color: var(--grey);
+  color: var(--dark);
   place-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.btn-light {
+  background-color: var(--dark);
+  color: var(--red);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 
 .btn-light:hover {
-  background-color: var(--light);
+  background-color: var(--dark);
+  color: var(--red);
 }
 
 h3 {
@@ -116,4 +134,20 @@ h3 {
 
 .options {
   text-align: center;
+}
+
+#googleLogin {
+  background-color: var(--dark);
+  color: var(--red);
+  width: 27em;
+  height: 3em;
+}
+#googleLogin:hover {
+  background-color: var(--light);
+}
+
+.logout-confirm {
+  font-size: 2em;
+  color: var(--dark);
+  font-family: 'Playfair Display', serif;
 }
