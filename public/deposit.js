@@ -1,6 +1,7 @@
 function Deposit(){
   const [show, setShow]     = React.useState(true);
-  const [status, setStatus] = React.useState('');  
+  const [status, setStatus] = React.useState('');
+  // const UserCtx = React.useContext(UserCtx);
 
   return (
     <>
@@ -26,8 +27,8 @@ function Deposit(){
 function DepositMsg(props){
   return (<>
     <h5>Success!</h5>
-    <button type="submit" 
-      className="btn btn-light" 
+    <button type="submit"
+      className="btn btn-light"
       onClick={() => {
           props.setShow(true);
           props.setStatus('');
@@ -58,22 +59,44 @@ function DepositForm(props){
   }
 
   return(<>
-
-    Email<br/>
-    <input type="input" 
-      className="form-control" 
-      placeholder="Enter email" 
+    {/* {UserCtx ? ( */}
+      <div>
+        Balance 
+      $user balance displayed here when logged in
+      <br />
+      <br />
+      Amount
+      <br />
+      <input
+        type="number"
+        className="form-control"
+        placeholder="Enter amount"
+        value={amount}
+        onChange={(e) => setAmount(e.currentTarget.value)}
+      />
+      <br />
+      <button type="submit" className="btn btn-light" onClick={handle}>
+        ADD CASH
+      </button>
+      </div>
+    {/* ) : ( */}
+    ----------- or -------------
+      <div>
+        Enter Email<br/>
+    <input type="input"
+      className="form-control"
+      placeholder="Enter email"
       value={email} onChange={e => setEmail(e.currentTarget.value)}/><br/>
-      
     Amount<br/>
-    <input type="number" 
-      className="form-control" 
-      placeholder="Enter amount" 
+    <input type="number"
+      className="form-control"
+      placeholder="Enter amount"
       value={amount} onChange={e => setAmount(e.currentTarget.value)}/><br/>
-
-    <button type="submit" 
-      className="btn btn-light" 
+    <button type="submit"
+      className="btn btn-light"
       onClick={handle}>ADD CASH</button>
-
+      </div>
+    {/* ) */}
+  {/* } */}
   </>);
 }
