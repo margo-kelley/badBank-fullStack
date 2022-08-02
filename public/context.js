@@ -1,7 +1,7 @@
 const Route       = ReactRouterDOM.Route;
 const Link        = ReactRouterDOM.Link;
 const HashRouter  = ReactRouterDOM.HashRouter;
-// const UserCtx = React.createContext(null);
+const UserCtx = React.createContext(null);
 
 const firebaseConfig = {
   apiKey: "AIzaSyBU-nWEb2C6TB9hwcJgl0oK5vDsm4b3Bjc",
@@ -14,8 +14,6 @@ const firebaseConfig = {
 
 // initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-
 
 function Card(props){
   function classes(){

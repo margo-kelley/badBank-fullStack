@@ -1,6 +1,13 @@
 function CreateAccount(){
   const [show, setShow] = React.useState(true);
   const [status, setStatus] = React.useState("");
+  const [acctID, setAcctID] = React.useState(null);
+
+  function getID() {
+    const acctID = function() {
+      return Math.random().toString().slice(2, 11);
+    }
+  }
 
   return (
     <>
@@ -28,7 +35,7 @@ function CreateMsg(props){
     <>
       <div className="container-fluid">
         <h2 className="success-head">
-          Success! Welcome to BADBANK.
+          Success! Welcome to BADBANK. Your Account ID number is -acctID-
         </h2>
         <br/>
         <br/>
@@ -44,18 +51,31 @@ function CreateForm(props){
   const [name, setName]         = React.useState('');
   const [email, setEmail]       = React.useState('');
   const [password, setPassword] = React.useState('');
+  const ctx = React.useContext(UserCtx);
 
   function handle(){
     const auth = firebase.auth();
-    auth.createUserWithEmailAndPassword(email, password);
-    console.log(name,email,password);
+    auth.createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      let user = userCredential.user;
+      console.log(`${user}`);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+
     const url = `/account/create/${name}/${email}/${password}`;
     (async () => {
         var res  = await fetch(url);
         var data = await res.json();
         console.log(data);
     })();
+    ctx.user = {name: name, email: email };
     props.setShow(false);
+
+    // setTimeout(() => {
+    //   window.location.replace('/login/');
+    // }, 5000);
   }
 
   return (

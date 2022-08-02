@@ -20,7 +20,7 @@ function Logout() {
         />
       </div>
     </>
-  );
+  )
 }
 
 function LogoutMsg(props) {
@@ -36,15 +36,11 @@ function LogoutForm(props) {
 
   function handle() {
   firebase.auth().signOut();
-  fetch( `/account/logout`)
+  fetch( `/account/logout/:email/:password`)
   }
 
   return (
     <>
-      
-        Display Email here,
-        <br />
-        <br />
       <div className="logout-confirm">
         Do you wish to logout?
         </div>
@@ -53,7 +49,6 @@ function LogoutForm(props) {
       <button type="submit" className="btn btn-light" onClick={handle}>
         LOGOUT
       </button>
-      
     </>
   );
 }

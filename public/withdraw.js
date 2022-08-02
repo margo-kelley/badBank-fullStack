@@ -20,8 +20,8 @@ function Withdraw(){
 function WithdrawMsg(props){
   return(<>
     <h5>Success!</h5>
-    <button type="submit" 
-      className="btn btn-light" 
+    <button type="submit"
+      className="btn btn-light"
       onClick={() => {
         props.setShow(true);
         props.setStatus('');
@@ -34,6 +34,7 @@ function WithdrawMsg(props){
 function WithdrawForm(props){
   const [email, setEmail]   = React.useState('');
   const [amount, setAmount] = React.useState('');
+  const ctx = React.useContext(UserCtx);
 
   function handle(){
     fetch(`/account/update/${email}/-${amount}`)
@@ -51,34 +52,54 @@ function WithdrawForm(props){
     });
   }
 
-
   return (
     <>
-      
-        Email
-        <br />
-        <input
-          type="input"
-          className="form-control"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.currentTarget.value)}
-        />
-        {/* <h4>Account Balance: ${balance}</h4> */}
-        <br />
-        Amount
-        <br />
-        <input
-          type="number"
-          className="form-control"
-          placeholder="Enter amount"
-          value={amount}
-          onChange={(e) => setAmount(e.currentTarget.value)}
-        />
-        <br />
-        <button type="submit" className="btn btn-light" onClick={handle}>
-          GET CASH
-        </button>
+      {/* {ctx.user ? ( */}
+        <div>
+          Balance: ${ctx.user.balance}
+          <br />
+          <br />
+          Amount
+          <br />
+          <input
+            type="number"
+            className="form-control"
+            placeholder="Enter amount"
+            value={amount}
+            onChange={(e) => setAmount(e.currentTarget.value)}
+          />
+          <br />
+          <button type="submit" className="btn btn-light" onClick={handle}>
+            GET CASH
+          </button>
+        </div>
+      {/* ) : ( */}
+        <div>
+          Enter Email
+          <br />
+          <input
+            type="input"
+            className="form-control"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.currentTarget.value)}
+          />
+          <br />
+          Amount
+          <br />
+          <input
+            type="number"
+            className="form-control"
+            placeholder="Enter amount"
+            value={amount}
+            onChange={(e) => setAmount(e.currentTarget.value)}
+          />
+          <br />
+          <button type="submit" className="btn btn-light" onClick={handle}>
+            GET CASH
+          </button>
+        </div>
+      {/* )} */}
     </>
   );
 }

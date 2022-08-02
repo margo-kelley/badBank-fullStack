@@ -1,6 +1,6 @@
 function Deposit(){
   const [show, setShow]     = React.useState(true);
-  const [status, setStatus] = React.useState('');  
+  const [status, setStatus] = React.useState('');
 
   return (
     <>
@@ -26,8 +26,8 @@ function Deposit(){
 function DepositMsg(props){
   return (<>
     <h5>Success!</h5>
-    <button type="submit" 
-      className="btn btn-light" 
+    <button type="submit"
+      className="btn btn-light"
       onClick={() => {
           props.setShow(true);
           props.setStatus('');
@@ -40,6 +40,8 @@ function DepositMsg(props){
 function DepositForm(props){
   const [email, setEmail]   = React.useState('');
   const [amount, setAmount] = React.useState('');
+  const ctx = React.useContext(UserCtx);
+  const [user, setUser] = React.useState("");
 
   function handle(){
     fetch(`/account/update/${email}/${amount}`)
@@ -58,22 +60,42 @@ function DepositForm(props){
   }
 
   return(<>
-
-    Email<br/>
-    <input type="input" 
-      className="form-control" 
-      placeholder="Enter email" 
+    {/* {ctx.user ? ( */}
+      <div>
+        Balance: ${ctx.user.balance}
+      <br />
+      <br />
+      Amount
+      <br />
+      <input
+        type="number"
+        className="form-control"
+        placeholder="Enter amount"
+        value={amount}
+        onChange={(e) => setAmount(e.currentTarget.value)}
+      />
+      <br />
+      <button type="submit" className="btn btn-light" onClick={handle}>
+        ADD CASH
+      </button>
+      </div>
+    {/* ) : (  */}
+      <div>
+        Enter Email<br/>
+    <input type="input"
+      className="form-control"
+      placeholder="Enter email"
       value={email} onChange={e => setEmail(e.currentTarget.value)}/><br/>
-      
     Amount<br/>
-    <input type="number" 
-      className="form-control" 
-      placeholder="Enter amount" 
+    <input type="number"
+      className="form-control"
+      placeholder="Enter amount"
       value={amount} onChange={e => setAmount(e.currentTarget.value)}/><br/>
-
-    <button type="submit" 
-      className="btn btn-light" 
+    <button type="submit"
+      className="btn btn-light"
       onClick={handle}>ADD CASH</button>
-
+      </div>
+    {/* )
+  } */}
   </>);
 }
