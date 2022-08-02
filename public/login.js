@@ -1,77 +1,93 @@
-function Login(){
-  const [show, setShow]     = React.useState(true);
-  const [status, setStatus] = React.useState('');
+// OLD VERSION
+function Login() {
+  const [show, setShow] = React.useState(true);
+  const [status, setStatus] = React.useState("");
 
   return (
     <>
-    <div className="container-fluid">
-      <div className="header">Login</div>
-      <Card
-      bgcolor="grey"
-      txtcolor="black"
-      status={status}
-      body={show ? 
-        <LoginForm setShow={setShow} setStatus={setStatus}/> :
-        <LoginMsg setShow={setShow} setStatus={setStatus}/>}
-    />
-    </div>
+      <div className="container-fluid">
+        <div className="header">Login</div>
+        <Card
+          bgcolor="grey"
+          txtcolor="black"
+          status={status}
+          body={
+            show ? (
+              <LoginForm setShow={setShow} setStatus={setStatus} />
+            ) : (
+              <LoginMsg setShow={setShow} setStatus={setStatus} />
+            )
+          }
+        />
+      </div>
     </>
-  )
+  );
 }
 
-function LoginMsg(props){
-  return(<>
-    <h5>Success!</h5>
-    <br/>
-    <br/>
-    <Link to="/dash/">
-    <button
-      className="btn btn-light">
-      GO TO DASHBOARD
-    </button>
-    </Link>
-  </>);
+function LoginMsg(props) {
+  const ctx = React.useContext(UserCtx);
+  return (
+    <>
+      <h5>Success! Welcome back, {ctx.user.email}.</h5>
+      <br />
+      <br />
+      <Link to="/dash/">
+        <button className="btn btn-light">GO TO ACCOUNT DASHBOARD</button>
+      </Link>
+    </>
+  );
 }
 
-function LoginForm(props){
-  const [email, setEmail]       = React.useState('');
-  const [password, setPassword] = React.useState('');
+function LoginForm(props) {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [user, setUser] = React.useState("");
+  const ctx = React.useContext(UserCtx);
 
-  function handle(){
-    fetch(`/account/login/:email/:password`)
-      .then((response) => response.text())
-      .then((text) => {
-        try {
-          const data = JSON.parse(text);
-          props.setStatus("");
-          props.setShow(false);
-          console.log("JSON:", data);
-        } catch (err) {
-          props.setStatus(text);
-          console.log("err:", text);
-        }
+  function handle() {
+    console.log(email, password);
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        ctx.user = user;
+        setUser(user);
+        props.setStatus("");
+        props.setShow(false);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 
   // add google login???
 
-  return (<>
-
-    Email<br/>
-    <input type="input" 
-      className="form-control" 
-      placeholder="Enter email" 
-      value={email} 
-      onChange={e => setEmail(e.currentTarget.value)}/><br/>
-
-    Password<br/>
-    <input type="password" 
-      className="form-control" 
-      placeholder="Enter password" 
-      value={password} 
-      onChange={e => setPassword(e.currentTarget.value)}/><br/>
-
-    <button type="submit" className="btn btn-light" onClick={handle}>LOGIN</button>
-   
-  </>);
+  return (
+    <>
+      Email
+      <br />
+      <input
+        type="input"
+        className="form-control"
+        placeholder="Enter email"
+        value={email}
+        onChange={(e) => setEmail(e.currentTarget.value)}
+      />
+      <br />
+      Password
+      <br />
+      <input
+        type="password"
+        className="form-control"
+        placeholder="Enter password"
+        value={password}
+        onChange={(e) => setPassword(e.currentTarget.value)}
+      />
+      <br />
+      <button type="submit" className="btn btn-light" onClick={handle}>
+        LOGIN
+      </button>
+    </>
+  );
 }
