@@ -1,4 +1,4 @@
-function Spa() {
+function Spa(props) {
   const Route = ReactRouterDOM.Route;
   const HashRouter = ReactRouterDOM.HashRouter;
 
@@ -12,7 +12,7 @@ function Spa() {
         <Route path="/logout/" component={Logout} />
         <Route path="/deposit/" component={Deposit} />
         <Route path="/withdraw/" component={Withdraw} />
-        <Route path="/dash/" component={Dash} />
+        <Route path="/alldata/" component={AllData} />
       </UserCtx.Provider>
     </HashRouter>
   );

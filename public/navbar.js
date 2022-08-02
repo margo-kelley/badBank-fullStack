@@ -1,4 +1,4 @@
-function NavBar(){
+function NavBar(props){
   const ctx = React.useContext(UserCtx);
   const [user, setUser] = React.useState('');
 
@@ -27,7 +27,7 @@ function NavBar(){
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="user-email" href="#/dash/">
+              <a className="nav-link" id="user-email" href="#/alldata/">
                 {/* {user.email} */}
               </a>
             </li>
