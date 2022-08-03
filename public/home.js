@@ -1,5 +1,6 @@
-function Home(){
+function Home(props){
   const ctx = React.useContext(UserCtx);
+  console.log(ctx);
   return (
     <>
       {/* {ctx ? ( */}
