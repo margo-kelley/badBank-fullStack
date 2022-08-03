@@ -4,7 +4,7 @@ function Spa(props) {
 
   return (
     <HashRouter>
-      <UserCtx.Provider value={{users: [{name:null, email:null, password:null, balance:0}]}}>
+      <UserCtx.Provider value={{user: [{name:"", email:"", password:""}]}}>
         <NavBar/>
         <Route path="/" exact component={Home} />
         <Route path="/createaccount/" component={CreateAccount} />
