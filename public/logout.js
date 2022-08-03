@@ -24,6 +24,22 @@ function Logout(props) {
 }
 
 function LogoutMsg(props) {
+  React.useEffect(() => {
+    const createaccount = document.getElementById("nav-createaccount");
+    const login = document.getElementById("nav-login");
+    const logout = document.getElementById("nav-logout");
+    const deposit = document.getElementById("nav-deposit");
+    const withdraw = document.getElementById("nav-withdraw");
+    const alldata = document.getElementById("nav-alldata");
+
+    createaccount.style.display = "block";
+    login.style.display = "block";
+    logout.style.display = "none";
+    deposit.style.display = "none";
+    withdraw.style.display = "none";
+    alldata.style.display = "none";
+  }, []);
+
   return (
     <>
       <h5>Logged Out</h5>

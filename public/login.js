@@ -1,4 +1,3 @@
-// OLD VERSION
 function Login() {
   const [show, setShow] = React.useState(true);
   const [status, setStatus] = React.useState("");
@@ -26,6 +25,23 @@ function Login() {
 
 function LoginMsg(props) {
   const ctx = React.useContext(UserCtx);
+
+  React.useEffect(() => {
+          const createaccount = document.getElementById("nav-createaccount");
+          const login = document.getElementById("nav-login");
+          const logout = document.getElementById("nav-logout");
+          const deposit = document.getElementById("nav-deposit");
+          const withdraw = document.getElementById("nav-withdraw");
+          const alldata = document.getElementById("nav-alldata");
+
+          createaccount.style.display = "none";
+          login.style.display = "none";
+          logout.style.display = "block";
+          deposit.style.display = "block";
+          withdraw.style.display = "block";
+          alldata.style.display = "block";
+        }, []);
+
   return (
     <>
       <h5>Success! Welcome back, {ctx.user.email}.</h5>
@@ -47,6 +63,8 @@ function LoginForm(props) {
   const [password, setPassword] = React.useState("");
   const [user, setUser] = React.useState("");
   const ctx = React.useContext(UserCtx);
+
+  
 
   function handle() {
     console.log(email, password);
