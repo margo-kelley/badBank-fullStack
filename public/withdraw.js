@@ -4,6 +4,23 @@
 function Withdraw(){
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');
+  const [user, setUser] = React.useState("");
+  const ctx = React.useContext(UserCtx);
+
+  React.useEffect(() => {
+    fetch(`/account/findOne/${ctx.user.email}`)
+      .then((response) => response.text())
+      .then((text) => {
+        try {
+          const data = JSON.parse(text);
+          setUser(user);
+          setBalance(data.balance);
+          console.log("JSON:", data);
+        } catch (err) {
+          console.log("err:", text);
+        }
+      });
+  });
 
   return (
     <div className="container-fluid">
@@ -37,19 +54,21 @@ function WithdrawMsg(props){
 function WithdrawForm(props){
   const [email, setEmail]   = React.useState('');
   const [amount, setAmount] = React.useState('');
+  const [balance, setBalance] = React.useState("");
   const ctx = React.useContext(UserCtx);
 
   function handle(){
-    fetch(`/account/update/${email}/-${amount}`)
+    fetch(`/account/update/${ctx.user.email}/-${amount}`)
     .then(response => response.text())
     .then(text => {
         try {
             const data = JSON.parse(text);
-            props.setStatus(JSON.stringify(data.value));
+            props.setStatus(JSON.stringify(data.amount));
+            setBalance(ctx.user.balance);
             props.setShow(false);
             console.log('JSON:', data);
         } catch(err) {
-            props.setStatus('Deposit failed')
+            props.setStatus('Withdraw failed')
             console.log('err:', text);
         }
     });
@@ -57,52 +76,27 @@ function WithdrawForm(props){
 
   return (
     <>
-      {/* {ctx.user ? ( */}
-        <div>
-          Balance: ${ctx.user.balance}
-          <br />
-          <br />
-          Amount
-          <br />
-          <input
-            type="number"
-            className="form-control"
-            placeholder="Enter amount"
-            value={amount}
-            onChange={(e) => setAmount(e.currentTarget.value)}
-          />
-          <br />
-          <button type="submit" className="btn btn-light" onClick={handle}>
-            GET CASH
-          </button>
-        </div>
-      {/* ) : ( */}
-        <div>
-          Enter Email
-          <br />
-          <input
-            type="input"
-            className="form-control"
-            placeholder="Enter email"
-            value={email}
-            onChange={(e) => setEmail(e.currentTarget.value)}
-          />
-          <br />
-          Amount
-          <br />
-          <input
-            type="number"
-            className="form-control"
-            placeholder="Enter amount"
-            value={amount}
-            onChange={(e) => setAmount(e.currentTarget.value)}
-          />
-          <br />
-          <button type="submit" className="btn btn-light" onClick={handle}>
-            GET CASH
-          </button>
-        </div>
-      {/* )} */}
+      <div>
+        {ctx.user.email}
+        <br />
+        <br />
+        Balance: ${ctx.user.balance}
+        <br />
+        <br />
+        Amount
+        <br />
+        <input
+          type="number"
+          className="form-control"
+          placeholder="Enter amount"
+          value={amount}
+          onChange={(e) => setAmount(e.currentTarget.value)}
+        />
+        <br />
+        <button type="submit" className="btn btn-light" onClick={handle}>
+          GET CASH
+        </button>
+      </div>
     </>
   );
 }
