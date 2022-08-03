@@ -30,9 +30,13 @@ function LoginMsg(props) {
     <>
       <h5>Success! Welcome back, {ctx.user.email}.</h5>
       <br />
+      <Link to="/deposit/">
+        <button className="btn btn-light">GO TO DEPOSIT</button>
+      </Link>
       <br />
-      <Link to="/dash/">
-        <button className="btn btn-light">GO TO ACCOUNT DASHBOARD</button>
+      <br />
+      <Link to="/withdraw/">
+        <button className="btn btn-light">GO TO WITHDRAW</button>
       </Link>
     </>
   );
