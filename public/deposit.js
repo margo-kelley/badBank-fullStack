@@ -1,3 +1,6 @@
+// ALLOWS BALANCE UPDATE FOR NOW.
+// figure out how to update balance only AFTER log in - take deposit off of navbar until logged in.
+
 function Deposit(){
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');
@@ -30,7 +33,6 @@ function DepositMsg(props){
       className="btn btn-light"
       onClick={() => {
           props.setShow(true);
-          props.setStatus('');
       }}>
       ADD MORE CASH
     </button>

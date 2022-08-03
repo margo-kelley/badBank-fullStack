@@ -1,3 +1,6 @@
+// Works Ok, needs improvement
+// take withdraw off of logged out navbar - only access after login
+
 function Withdraw(){
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');
