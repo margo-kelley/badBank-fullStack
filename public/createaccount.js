@@ -1,13 +1,6 @@
 function CreateAccount(){
   const [show, setShow] = React.useState(true);
   const [status, setStatus] = React.useState("");
-  const [acctID, setAcctID] = React.useState(null);
-
-  function getID() {
-    const acctID = function() {
-      return Math.random().toString().slice(2, 11);
-    }
-  }
 
   return (
     <>
@@ -35,7 +28,7 @@ function CreateMsg(props){
     <>
       <div className="container-fluid">
         <h2 className="success-head">
-          Success! Welcome to BADBANK. Your Account ID number is -acctID-
+          Success! Welcome to BADBANK, please login to continue.
         </h2>
         <br/>
         <br/>
