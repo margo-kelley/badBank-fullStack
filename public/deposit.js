@@ -1,5 +1,3 @@
-// display balance
-
 function Deposit(){
   const [show, setShow]     = React.useState(true);
   const [balance, setBalance] = React.useState('');
@@ -9,7 +7,7 @@ function Deposit(){
 
   // get email
   React.useEffect(() => {
-    fetch(`/account/findOne/${ctx.user.email}`)
+    fetch(`/account/findOne/${ctx.email}`)
       .then((response) => response.text())
       .then((text) => {
         try {
@@ -45,9 +43,8 @@ function Deposit(){
 }
 
 function DepositMsg(props){
-  const ctx = React.useContext(UserCtx);
   return (<>
-    <h5>Success! Balance: ${ctx.user.balance}</h5>
+    <h5>Success!</h5>
     <button type="submit"
       className="btn btn-light"
       onClick={() => {
@@ -64,7 +61,7 @@ function DepositForm(props){
 
   function handle(){
     // get user from db
-    fetch(`/account/update/${ctx.user.email}/${amount}`)
+    fetch(`/account/update/${ctx.email}/${amount}`)
     .then(response => response.text())
     .then(text => {
         try {
@@ -82,10 +79,10 @@ function DepositForm(props){
   return (
     <>
       <div>
-        <strong>{ctx.user.email}</strong>
+        <strong>{ctx.email}</strong>
         <br />
         <br />
-        Balance: ${ctx.user.balance}
+        Balance: ${ctx.balance}
         <br />
         <br />
         Amount

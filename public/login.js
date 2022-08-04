@@ -48,7 +48,7 @@ function LoginMsg(props) {
         //display menu for successful login
   return (
     <>
-      <h5>Success! Welcome back, {ctx.user.email}. ??{ctx.user.name}??{ctx.user.balance}??</h5>
+      <h5>Success! Welcome back, {ctx.user}.</h5>
       <br />
       <Link to="/deposit/">
         <button className="btn btn-light">GO TO DEPOSIT</button>
@@ -73,13 +73,17 @@ function LoginForm(props) {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        ctx.user = user;
-        setUser(user);
-        props.setStatus("");
-        props.setShow(false);
-      })
+        fetch(`/account/login/${email}/${password}`)
+        .then((response) => response.text())
+        .then((text) => {
+          const data = JSON.parse(text);
+          setUser(data.name);
+          ctx.user = data.name;
+          ctx.email = data.email;
+          ctx.balance = data.balance;
+          props.setStatus("");
+          props.setShow(false);
+        })
       .catch((error) => {
         console.log(error);
       });
