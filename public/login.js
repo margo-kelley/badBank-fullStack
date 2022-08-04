@@ -85,8 +85,6 @@ function LoginForm(props) {
       });
   }
 
-  // add google login???
-
   // render login form
   return (
     <>

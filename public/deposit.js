@@ -45,8 +45,9 @@ function Deposit(){
 }
 
 function DepositMsg(props){
+  const ctx = React.useContext(UserCtx);
   return (<>
-    <h5>Success!</h5>
+    <h5>Success! Balance: ${ctx.user.balance}</h5>
     <button type="submit"
       className="btn btn-light"
       onClick={() => {
@@ -58,11 +59,8 @@ function DepositMsg(props){
 } 
 
 function DepositForm(props){
-  const [email, setEmail]   = React.useState('');
   const [amount, setAmount] = React.useState('');
   const ctx = React.useContext(UserCtx);
-  const balance = ctx.user.balance;
-
 
   function handle(){
     // get user from db
@@ -84,10 +82,10 @@ function DepositForm(props){
   return (
     <>
       <div>
-        {ctx.user.email}
+        <strong>{ctx.user.email}</strong>
         <br />
         <br />
-        Balance: ${balance}
+        Balance: ${ctx.user.balance}
         <br />
         <br />
         Amount
