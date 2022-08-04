@@ -48,10 +48,18 @@ function CreateForm(props){
 
   function handle(){
     const auth = firebase.auth();
-    auth.createUserWithEmailAndPassword(email, password)
+    const promise = auth.createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       let user = userCredential.user;
       console.log(`${user}`);
+    })
+    promise.then(()=>{
+      const url = `/account/create/${name}/${email}/${password}`;
+      (async() => {
+        var res = await fetch(url);
+        var data = await res.json();
+        console.log(data);
+      })
     })
     .catch((error) => {
       console.log(error);
