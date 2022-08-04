@@ -6,9 +6,8 @@ function AllData(){
         fetch('/account/all')
             .then(response => response.json())
             .then(data => {
-              console.log(data);
-              setData(Object.entries(data));
-              console.log(data[0].name);
+              // console.log(data);
+              setData(data);
             });
     }, []);
 
@@ -19,31 +18,30 @@ function AllData(){
           <p className="header">User Dashboard</p>
           <div className="card-body">
             <div className="container text-center">
-              <div className="row row-cols-3">
+              <div className="row row-col">
                 <div className="col">
-                {data.map((data, index) => {
-                return (
-                  <ul>
-                    <li key={index.name}>
-                      <strong>Name:</strong> {index.name}
-                    </li>
-                    <li key={index.email}>
-                      <strong>Email:</strong> {index.email}
-                    </li>
-                    <li key={index.password}>
-                      <strong>Password:</strong> {index.password}
-                    </li>
-                    <li key={index.balance}>
-                      <strong>Balance:</strong> ${index.balance}
-                    </li>
-                  </ul>
-                );
-              })}
+                  {data.map((x, index) => {
+                    return (
+                      <ul>
+                        <li key={index.name}>
+                          <strong>Name:</strong> {data[index].name}
+                        </li>
+                        <li key={index.email}>
+                          <strong>Email:</strong> {data[index].email}
+                        </li>
+                        <li key={index.password}>
+                          <strong>Password:</strong> {data[index].password}
+                        </li>
+                        <li key={index.balance}>
+                          <strong>Balance:</strong> ${data[index].balance}
+                        </li>
+                      </ul>
+                    );
+                  })}
                 </div>
               </div>
             </div>
-            <div>
-            </div>
+            <div></div>
           </div>
         </div>
       </>
