@@ -1,6 +1,5 @@
 function AllData(){
   const [data, setData] = React.useState([]);
-  const [users, setUsers] = React.useState([]);
 
     React.useEffect(() => {
         // fetch all accounts from API
@@ -8,8 +7,8 @@ function AllData(){
             .then(response => response.json())
             .then(data => {
               console.log(data);
-              setData(JSON.stringify(data));
-              setUsers(Object.entries(data));
+              setData(Object.entries(data));
+              console.log(data[0].name);
             });
     }, []);
 
@@ -22,20 +21,20 @@ function AllData(){
             <div className="container text-center">
               <div className="row row-cols-3">
                 <div className="col">
-                {users.map((users, index) => {
+                {data.map((data, index) => {
                 return (
                   <ul>
-                    <li key={users.name}>
-                      <strong>Name:</strong> {users.name}
+                    <li key={index.name}>
+                      <strong>Name:</strong> {index.name}
                     </li>
-                    <li key={users.email}>
-                      <strong>Email:</strong> {users.email}
+                    <li key={index.email}>
+                      <strong>Email:</strong> {index.email}
                     </li>
-                    <li key={users.password}>
-                      <strong>Password:</strong> {users.password}
+                    <li key={index.password}>
+                      <strong>Password:</strong> {index.password}
                     </li>
-                    <li key={users.balance}>
-                      <strong>Balance:</strong> {users.balance}
+                    <li key={index.balance}>
+                      <strong>Balance:</strong> ${index.balance}
                     </li>
                   </ul>
                 );
@@ -46,7 +45,6 @@ function AllData(){
             <div>
             </div>
           </div>
-          {data}
         </div>
       </>
     );
