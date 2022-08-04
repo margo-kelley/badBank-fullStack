@@ -37,8 +37,7 @@ function findOne(email) {
   return new Promise((resolve, reject) => {
     const customers = db
       .collection("users")
-      // get all info? just email
-      .findOne({ email: email, name:name, password:password, balance:balance })
+      .findOne({ email: email })
       .then((doc) => resolve(doc))
       .catch((err) => reject(err));
   });

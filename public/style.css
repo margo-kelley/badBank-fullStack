@@ -64,6 +64,7 @@ nav {
   font-size: 4em;
   margin-bottom: 0;
   margin-top: 2em;
+  background-color: var(--red);
   color: var(--dark);
 }
 
