@@ -48,7 +48,7 @@ function LoginMsg(props) {
         //display menu for successful login
   return (
     <>
-      <h5>Success! Welcome back, {ctx.user}.</h5>
+      <h5>Success! Welcome back, <strong>{ctx.user}</strong>.</h5>
       <br />
       <Link to="/deposit/">
         <button className="btn btn-light">GO TO DEPOSIT</button>
