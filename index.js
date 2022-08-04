@@ -2,13 +2,36 @@ var express = require('express');
 var app     = express();
 var cors    = require('cors');
 var dal     = require('./dal.js');
-const e = require('express');
+const swaggerUI = require('swagger-ui-express');
+const e     = require('express');
+const swaggerJSDoc = require('swagger-jsdoc');
+
+// swagger
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: 'Bad Bank API',
+      version: "1.0.0"
+    }
+  },
+  apis: ['index.js']
+};
+const swaggerDocs = swaggerJSDoc(swaggerOptions);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 // used to serve static files from public directory
 app.use(express.static('public'));
 app.use(cors());
 
-// create user account
+/**
+ * @swagger
+ * /account/create/{name}/{email}/{password}:
+ *    get:
+ *      description: create account for badbank
+ *      responses:
+ *       200:
+ *        description: Success
+ */
 app.get('/account/create/:name/:email/:password', function (req, res) {
     // check if account exists
     dal.find(req.params.email).
@@ -30,7 +53,15 @@ app.get('/account/create/:name/:email/:password', function (req, res) {
 });
 
 
-// login user
+/**
+ * @swagger
+ * /account/login/{name}/{email}/{password}:
+ *  get:
+ *    description: login to existing account for badbank
+ *    responses:
+ *      200:
+ *        description: Success
+ */
 app.get('/account/login/:email/:password', function (req, res) {
   dal.find(req.params.email).
     then((user) => {
@@ -49,7 +80,15 @@ app.get('/account/login/:email/:password', function (req, res) {
     });
 });
 
-// find user account
+/**
+ * @swagger
+ * /account/find/{email}:
+ *  get:
+ *    description: find a user by email
+ *    responses:
+ *      200:
+ *        description: Success
+ */
 app.get('/account/find/:email', function (req, res) {
   dal.find(req.params.email).
     then((user) => {
@@ -58,7 +97,15 @@ app.get('/account/find/:email', function (req, res) {
     });
 });
 
-// find one user by email - alternative to find
+/**
+ * @swagger 
+ * /account/findOne/{email}:
+ *  get:
+ *    description: find a user by email, alternative
+ *    responses:
+ *      200:
+ *        description: Success
+ */
 app.get('/account/findOne/:email', function (req, res) {
   dal.findOne(req.params.email).
     then((user) => {
@@ -68,7 +115,15 @@ app.get('/account/findOne/:email', function (req, res) {
 });
 
 
-// update - deposit/withdraw amount
+/**
+ * @swagger
+ * /account/update/{email}/{amount}:
+ *  get:
+ *    description: find user via email, then update prop 'balance' via amount
+ *    responses:
+ *      200:
+ *        description: Success
+ */
 app.get('/account/update/:email/:amount', function (req, res) {
   var amount = Number(req.params.amount);
   dal.update(req.params.email, amount).
@@ -78,7 +133,15 @@ app.get('/account/update/:email/:amount', function (req, res) {
     });
 });
 
-// all accounts
+/**
+ * @swagger
+ * /account/all:
+ *  get:
+ *    description: get ALL users
+ *    responses:
+ *      200:
+ *        description: Success
+ */
 app.get('/account/all', function (req, res) {
   dal.all().
   then((docs) => {
