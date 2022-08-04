@@ -64,8 +64,6 @@ function LoginForm(props) {
   const [user, setUser] = React.useState("");
   const ctx = React.useContext(UserCtx);
 
-  
-
   function handle() {
     console.log(email, password);
     firebase
