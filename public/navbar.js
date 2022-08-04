@@ -1,6 +1,7 @@
 function NavBar(props){
   const ctx = React.useContext(UserCtx);
 
+  // conditional render: navbar logged out
   React.useEffect(() => {
     const createaccount = document.getElementById('nav-createaccount');
     const login = document.getElementById('nav-login');

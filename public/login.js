@@ -2,6 +2,7 @@ function Login() {
   const [show, setShow] = React.useState(true);
   const [status, setStatus] = React.useState("");
 
+  //render 1 of 2 views
   return (
     <>
       <div className="container-fluid">
@@ -24,8 +25,10 @@ function Login() {
 }
 
 function LoginMsg(props) {
+  const [user, setUser] = React.useState('');
   const ctx = React.useContext(UserCtx);
 
+  //logged in navbar
   React.useEffect(() => {
           const createaccount = document.getElementById("nav-createaccount");
           const login = document.getElementById("nav-login");
@@ -42,9 +45,10 @@ function LoginMsg(props) {
           alldata.style.display = "block";
         }, []);
 
+        //display menu for successful login
   return (
     <>
-      <h5>Success! Welcome back, {ctx.user.email}.</h5>
+      <h5>Success! Welcome back, {ctx.user.email}. ??{ctx.user.name}??{ctx.user.balance}??</h5>
       <br />
       <Link to="/deposit/">
         <button className="btn btn-light">GO TO DEPOSIT</button>
@@ -83,6 +87,7 @@ function LoginForm(props) {
 
   // add google login???
 
+  // render login form
   return (
     <>
       Email

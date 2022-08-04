@@ -1,19 +1,19 @@
-// display balance && take email off - user already logged in
+// display balance
 
 function Deposit(){
   const [show, setShow]     = React.useState(true);
+  const [balance, setBalance] = React.useState('');
   const [status, setStatus] = React.useState('');
   const [user, setUser] = React.useState('');
   const ctx = React.useContext(UserCtx);
 
+  // get email
   React.useEffect(() => {
-
     fetch(`/account/findOne/${ctx.user.email}`)
       .then((response) => response.text())
       .then((text) => {
         try {
           const data = JSON.parse(text);
-          setUser(user);
           setBalance(data.balance);
           console.log("JSON:", data);
         } catch (err) {
@@ -22,6 +22,7 @@ function Deposit(){
       });
   })
 
+  // conditional render: cards
   return (
     <>
       <div className="container-fluid">
@@ -58,20 +59,19 @@ function DepositMsg(props){
 
 function DepositForm(props){
   const [email, setEmail]   = React.useState('');
-  const [name, setName] = React.useState('');
-  const [balance, setBalance] = React.useState('');
   const [amount, setAmount] = React.useState('');
   const ctx = React.useContext(UserCtx);
+  const balance = ctx.user.balance;
 
 
   function handle(){
+    // get user from db
     fetch(`/account/update/${ctx.user.email}/${amount}`)
     .then(response => response.text())
     .then(text => {
         try {
             const data = JSON.parse(text);
             props.setStatus(JSON.stringify(data.amount));
-            setBalance(ctx.user.balance);
             props.setShow(false);
             console.log('JSON:', data);
         } catch(err) {
@@ -87,7 +87,7 @@ function DepositForm(props){
         {ctx.user.email}
         <br />
         <br />
-        Balance: ${ctx.user.balance}
+        Balance: ${balance}
         <br />
         <br />
         Amount

@@ -1,6 +1,4 @@
-// Works Ok, needs improvement
-// take withdraw off of logged out navbar - only access after login
-
+// display balance
 function Withdraw(){
   const [show, setShow]     = React.useState(true);
   const [status, setStatus] = React.useState('');
@@ -8,6 +6,7 @@ function Withdraw(){
   const ctx = React.useContext(UserCtx);
 
   React.useEffect(() => {
+    // get user from db
     fetch(`/account/findOne/${ctx.user.email}`)
       .then((response) => response.text())
       .then((text) => {
@@ -58,6 +57,7 @@ function WithdrawForm(props){
   const ctx = React.useContext(UserCtx);
 
   function handle(){
+    // api to update user balance
     fetch(`/account/update/${ctx.user.email}/-${amount}`)
     .then(response => response.text())
     .then(text => {

@@ -2,6 +2,7 @@ function Logout(props) {
   const [show, setShow] = React.useState(true);
   const [status, setStatus] = React.useState("");
 
+  // conditional render: cards
   return (
     <>
       <div className="container-fluid">
@@ -24,6 +25,7 @@ function Logout(props) {
 }
 
 function LogoutMsg(props) {
+  // conditional render: navbar logged out
   React.useEffect(() => {
     const createaccount = document.getElementById("nav-createaccount");
     const login = document.getElementById("nav-login");
@@ -57,6 +59,7 @@ function LogoutForm(props) {
 
   function handle() {
   console.log("Logging Out...");
+  // firebase sign out
   firebase
   .auth()
   .signOut()

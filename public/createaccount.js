@@ -47,36 +47,27 @@ function CreateForm(props){
   const ctx = React.useContext(UserCtx);
 
   function handle(){
+    //firebase auth
     const auth = firebase.auth();
     const promise = auth.createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       let user = userCredential.user;
       console.log(`${user}`);
     })
-    promise.then(()=>{
-      const url = `/account/create/${name}/${email}/${password}`;
-      (async() => {
-        var res = await fetch(url);
-        var data = await res.json();
-        console.log(data);
-      })
-    })
+    promise
     .catch((error) => {
       console.log(error);
     })
 
+    //add user to db
     const url = `/account/create/${name}/${email}/${password}`;
     (async () => {
         var res  = await fetch(url);
         var data = await res.json();
         console.log(data);
+        ctx.user = {name: name, email: email };
+        props.setShow(false);
     })();
-    ctx.user = {name: name, email: email };
-    props.setShow(false);
-
-    // setTimeout(() => {
-    //   window.location.replace('/login/');
-    // }, 5000);
   }
 
   return (

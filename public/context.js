@@ -1,8 +1,10 @@
 const Route       = ReactRouterDOM.Route;
 const Link        = ReactRouterDOM.Link;
 const HashRouter  = ReactRouterDOM.HashRouter;
+//create user context
 const UserCtx = React.createContext(null);
 
+// firebase info
 const firebaseConfig = {
   apiKey: "AIzaSyBU-nWEb2C6TB9hwcJgl0oK5vDsm4b3Bjc",
   authDomain: "badbank-addf2.firebaseapp.com",
@@ -15,6 +17,7 @@ const firebaseConfig = {
 // initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+// card
 function Card(props){
   function classes(){
     const bg  = props.bgcolor ? ' bg-' + props.bgcolor : ' ';

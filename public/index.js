@@ -2,6 +2,7 @@ function Spa(props) {
   const Route = ReactRouterDOM.Route;
   const HashRouter = ReactRouterDOM.HashRouter;
 
+  // router
   return (
     <HashRouter>
       <UserCtx.Provider value={{user: [{name:"", email:"", password:""}]}}>
