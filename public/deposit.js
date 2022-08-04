@@ -2,7 +2,6 @@ function Deposit(){
   const [show, setShow]     = React.useState(true);
   const [balance, setBalance] = React.useState('');
   const [status, setStatus] = React.useState('');
-  const [user, setUser] = React.useState('');
   const ctx = React.useContext(UserCtx);
 
   // get email
@@ -48,7 +47,7 @@ function DepositMsg(props){
     <button type="submit"
       className="btn btn-light"
       onClick={() => {
-          props.setShow(true);
+        props.setShow(true);
       }}>
       ADD MORE CASH
     </button>
@@ -57,23 +56,26 @@ function DepositMsg(props){
 
 function DepositForm(props){
   const [amount, setAmount] = React.useState('');
+  const [balance, setBalance] = React.useState('');
   const ctx = React.useContext(UserCtx);
 
   function handle(){
     // get user from db
     fetch(`/account/update/${ctx.email}/${amount}`)
-    .then(response => response.text())
-    .then(text => {
+      .then((response) => response.text())
+      .then((text) => {
         try {
-            const data = JSON.parse(text);
-            props.setStatus(JSON.stringify(data.amount));
-            props.setShow(false);
-            console.log('JSON:', data);
-        } catch(err) {
-            props.setStatus('Deposit failed')
-            console.log('err:', text);
+          const data = JSON.parse(text);
+          props.setStatus(JSON.stringify(data.amount));
+          props.setShow(false);
+          setBalance(data.balance);
+          console.log("JSON:", data);
+        } catch (err) {
+          props.setStatus("Deposit failed");
+          console.log("err:", text);
         }
-    });
+      })
+      setBalance(balance + Number(amount));
   }
 
   return (
