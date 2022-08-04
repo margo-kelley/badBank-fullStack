@@ -57,10 +57,6 @@ nav {
   color: var(--light);
 }
 
-#user-email {
-  color: var(--light);
-}
-
 .page-head {
   text-align: center;
   font-family: 'Playfair Display', serif;
@@ -130,16 +126,6 @@ h3 {
 
 .options {
   text-align: center;
-}
-
-#googleLogin {
-  background-color: var(--dark);
-  color: var(--red);
-  width: 27em;
-  height: 3em;
-}
-#googleLogin:hover {
-  background-color: var(--light);
 }
 
 .logout-confirm {
