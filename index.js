@@ -5,6 +5,18 @@ var dal     = require('./dal.js');
 const swaggerUI = require('swagger-ui-express');
 const e     = require('express');
 const swaggerJSDoc = require('swagger-jsdoc');
+const mongoose = require('mongoose');
+
+mongoose
+  .connect(
+    "mongodb+srv://margo-kelley:w*TCy.h@G3SL!nr@cluster0.avptsa9.mongodb.net/test",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  .then(() => console.log("MongoDB has been connected"))
+  .catch((err) => console.log(err));
 
 // swagger
 const swaggerOptions = {
@@ -150,6 +162,6 @@ app.get('/account/all', function (req, res) {
   });
 });
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 app.listen(port);
 console.log('Running on port: ' + port);
