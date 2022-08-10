@@ -30,9 +30,9 @@ function Withdraw(){
       status={status}
           body={
             show ? (
-              <DepositForm setShow={setShow} setStatus={setStatus} />
+              <WithdrawForm setShow={setShow} setStatus={setStatus} />
             ) : (
-              <DepositMsg setShow={setShow} setStatus={setStatus} />
+              <WithdrawMsg setShow={setShow} setStatus={setStatus} />
             )
           }
       />
