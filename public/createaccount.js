@@ -56,7 +56,7 @@ function CreateForm(props){
     })
     promise
     .catch((error) => {
-      console.log(error);
+      console.log(JSON.parse(error));
     })
 
     //add user to db
