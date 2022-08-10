@@ -1,0 +1,136 @@
+:root {
+  --dark: black;
+  --light: white;
+  --red: red;
+  --grey: #aaaaaa;
+}
+
+.navbar-brand, a:hover, .active, .page-subtitle {
+  color: var(--red);
+}
+
+nav, ::-webkit-scrollbar-track {
+  background-color: var(--dark);
+}
+
+* {
+  overflow-x: hidden;
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--grey);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--red);
+}
+
+.navbar-brand {
+  margin-right: 0;
+  margin-bottom: 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.nav-link {
+  padding-left: 0;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  color: var(--grey);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.dropdown-item {
+  display: inline;
+}
+
+nav {
+  color: var(--light);
+}
+
+.page-head {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 4em;
+  margin-bottom: 0;
+  margin-top: 2em;
+  background-color: var(--red);
+  color: var(--dark);
+}
+
+.header, .page-subtitle {
+  text-align: center;
+  font-weight: 500;
+  font-size: 2em;
+}
+
+.header {
+  margin-bottom: 1em;
+  margin-top: 2em;
+  font-family: 'Playfair Display', serif;
+}
+
+.page-subtitle {
+  font-style: italic;
+  margin-bottom: 4em;
+}
+
+.card-body {
+  padding: 2.5em;
+  background-color: var(--grey);
+  color: var(--dark);
+  place-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.btn-light {
+  background-color: var(--dark);
+  color: var(--red);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.btn-light:hover {
+  background-color: var(--dark);
+  color: var(--red);
+}
+
+h3 {
+  font-style: oblique;
+  padding-top: .5em;
+}
+
+.p {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+#p {
+  margin: 0;
+  padding: 0;
+}
+
+#bal-num {
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+.options {
+  text-align: center;
+}
+
+.logout-confirm {
+  font-size: 2em;
+  color: var(--dark);
+  font-family: 'Playfair Display', serif;
+}
