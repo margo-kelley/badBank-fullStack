@@ -5,6 +5,7 @@ var dal     = require('./dal.js');
 const swaggerUI = require('swagger-ui-express');
 const e     = require('express');
 const swaggerJSDoc = require('swagger-jsdoc');
+const mongoose = require('mongoose');
 
 mongoose
   .connect(
