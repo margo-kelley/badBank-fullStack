@@ -64,7 +64,7 @@ function WithdrawForm(props){
 
   function handle(){
     // get user from db
-    fetch(`/account/update/${ctx.email}/${amount}`)
+    fetch(`/account/update/${ctx.email}/-${amount}`)
     .then((response) => response.text())
       .then((text) => {
         try {
@@ -72,11 +72,11 @@ function WithdrawForm(props){
           props.setShow(false);
           setBalance(data.balance);
         } catch (err) {
-          props.setStatus("Deposit failed");
+          props.setStatus("Withdraw failed");
           console.log("err:", text);
         }
       })
-    ctx.balance = Number(ctx.balance) + Number(amount);
+    ctx.balance = Number(ctx.balance) - Number(amount);
   }
 
   return (
