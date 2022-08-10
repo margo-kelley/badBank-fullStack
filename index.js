@@ -6,6 +6,17 @@ const swaggerUI = require('swagger-ui-express');
 const e     = require('express');
 const swaggerJSDoc = require('swagger-jsdoc');
 
+mongoose
+  .connect(
+    "mongodb+srv://margo-kelley:ZWndLqBn5WiijOSW@cluster0.avptsa9.mongodb.net/?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  .then(() => console.log("MongoDB has been connected"))
+  .catch((err) => console.log(err));
+
 // swagger
 const swaggerOptions = {
   swaggerDefinition: {
