@@ -85,7 +85,7 @@ function LoginForm(props) {
           props.setShow(false);
         })
       .catch((error) => {
-        console.log(error);
+        console.log(JSON.parse(error));
       });
   }
 
